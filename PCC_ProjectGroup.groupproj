@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BB46B508-AEB8-42CF-B736-981990EB563B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PCC_DataServer\PCC_DataServer.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PCC_DataServer">
+        <MSBuild Projects="PCC_DataServer\PCC_DataServer.dproj"/>
+    </Target>
+    <Target Name="PCC_DataServer:Clean">
+        <MSBuild Projects="PCC_DataServer\PCC_DataServer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PCC_DataServer:Make">
+        <MSBuild Projects="PCC_DataServer\PCC_DataServer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PCC_DataServer"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PCC_DataServer:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PCC_DataServer:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

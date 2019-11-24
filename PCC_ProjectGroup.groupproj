@@ -6,6 +6,9 @@
         <Projects Include="PCC_DataServer\PCC_DataServer.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="PCC_DataServer\PCC_DataServer_FormTest.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -23,14 +26,23 @@
     <Target Name="PCC_DataServer:Make">
         <MSBuild Projects="PCC_DataServer\PCC_DataServer.dproj" Targets="Make"/>
     </Target>
+    <Target Name="PCC_DataServer_FormTest">
+        <MSBuild Projects="PCC_DataServer\PCC_DataServer_FormTest.dproj"/>
+    </Target>
+    <Target Name="PCC_DataServer_FormTest:Clean">
+        <MSBuild Projects="PCC_DataServer\PCC_DataServer_FormTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PCC_DataServer_FormTest:Make">
+        <MSBuild Projects="PCC_DataServer\PCC_DataServer_FormTest.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="PCC_DataServer"/>
+        <CallTarget Targets="PCC_DataServer;PCC_DataServer_FormTest"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="PCC_DataServer:Clean"/>
+        <CallTarget Targets="PCC_DataServer:Clean;PCC_DataServer_FormTest:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="PCC_DataServer:Make"/>
+        <CallTarget Targets="PCC_DataServer:Make;PCC_DataServer_FormTest:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
